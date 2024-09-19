@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(LoginActivity.this, "Login Succesful", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                        startActivity(new Intent(LoginActivity.this, AppoinmentActivity.class));
                                         finish();  // Închide activitatea curentă pentru a preveni întoarcerea
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {

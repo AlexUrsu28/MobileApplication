@@ -15,7 +15,7 @@ public class MyDataBase extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASENAME = "HotSpitalDataBase.db";
-    private static final int DATABASEVERSION = 1;
+    private static final int DATABASEVERSION = 3;
     private static final String TABLENAME = "HotSpitalReserved";
     private static final String COLUMNID = "ID";
     private static final String COLUMNNAME = "NameHotSpital";
@@ -83,4 +83,59 @@ public class MyDataBase extends SQLiteOpenHelper {
         db.close();
         return idList;
     }
+
+    // Metodă pentru a obține toate spitalele
+    public ArrayList<String> getSpitalList() {
+        ArrayList<String> hospitals = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT DISTINCT " + COLUMNNAME + " FROM " + TABLENAME, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String hospital = cursor.getString(0);
+                hospitals.add(hospital);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return hospitals;
+    }
+
+    // Metodă pentru a obține toate departamentele
+    public ArrayList<String> getDepartamentList() {
+        ArrayList<String> departments = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT DISTINCT " + COLUMNDEPARTMENT + " FROM " + TABLENAME, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String department = cursor.getString(0);
+                departments.add(department);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return departments;
+    }
+
+    // Metodă pentru a obține toți doctorii pe baza unui departament selectat
+    public ArrayList<String> getDoctorList() {
+        ArrayList<String> doctors = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT DISTINCT " + COLUMNDOCTORS + " FROM " + TABLENAME  , null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String doctor = cursor.getString(0);
+                doctors.add(doctor);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return doctors;
+    }
+
 }

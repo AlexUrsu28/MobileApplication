@@ -1,7 +1,6 @@
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
 
     <application
         android:allowBackup="true"
@@ -27,20 +26,20 @@
         <!-- LoginActivity urmează după SignUpActivity -->
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".SignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".SignUpActivity" />
 
-        <!-- MainActivity urmează după LoginActivity -->
+        <!-- AppoinmentActivity urmează după LoginActivity -->
         <activity
-            android:name=".MainActivity"
-            android:parentActivityName=".LoginActivity"
-            android:exported="false" />
+            android:name=".AppoinmentActivity"
+            android:exported="false"
+            android:parentActivityName=".LoginActivity" />
 
-        <!-- AddActivity urmează după MainActivity -->
+        <!-- AddActivity urmează după AppoinmentActivity -->
         <activity
             android:name=".AddActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".AppoinmentActivity" />
 
     </application>
 

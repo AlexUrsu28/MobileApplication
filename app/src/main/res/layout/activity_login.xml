@@ -50,7 +50,10 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/black"
                 android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp" />
+                android:layout_marginRight="40dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                />
 
             <EditText
                 android:id="@+id/login_password"
@@ -67,6 +70,7 @@
                 android:textColorHighlight="@color/black"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+                android:inputType="textPassword"
                 />
 
             <Button
