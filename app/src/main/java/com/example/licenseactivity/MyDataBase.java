@@ -6,9 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 
 public class MyDataBase extends SQLiteOpenHelper {
@@ -137,5 +135,4 @@ public class MyDataBase extends SQLiteOpenHelper {
         db.close();
         return doctors;
     }
-
 }
