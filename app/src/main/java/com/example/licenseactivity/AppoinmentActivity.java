@@ -9,14 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class AppoinmentActivity extends AppCompatActivity {
 
-    EditText editTextPatientName;
+    EditText editTextPatientName, editTextDate;
     Spinner spinnerSpital, spinnerDepartament, spinnerDoctor;
     Button buttonSubmit;
     FloatingActionButton floatingButton;
@@ -30,6 +29,7 @@ public class AppoinmentActivity extends AppCompatActivity {
 
         // Inițializarea widget-urilor
         editTextPatientName = findViewById(R.id.editTextPatientName);
+        editTextDate = findViewById(R.id.editTextDate);
         spinnerSpital = findViewById(R.id.spinner_spital);
         spinnerDepartament = findViewById(R.id.spinner_departament);
         spinnerDoctor = findViewById(R.id.spinner_doctor);
@@ -81,48 +81,21 @@ public class AppoinmentActivity extends AppCompatActivity {
         spinnerDoctor.setAdapter(doctorAdapter);
     }
 
-//    private void populateSpinners() {
-//        // Exemplu de populare a spinner-ului cu date predefinite pentru spital și departamente
-//        // (în mod normal aceste date ar veni din baza de date)
-//
-//        // Popularea spinner-ului pentru spital
-//        ArrayList<String> spitalList = new ArrayList<>();
-//        spitalList.add("Spitalul Municipal");
-//        spitalList.add("Spitalul Județean");
-//        spitalList.add("Clinica Private");
-//        ArrayAdapter<String> spitalAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spitalList);
-//        spitalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerSpital.setAdapter(spitalAdapter);
-//
-//        // Popularea spinner-ului pentru departamente
-//        ArrayList<String> departamentList = new ArrayList<>();
-//        departamentList.add("Cardiologie");
-//        departamentList.add("Dermatologie");
-//        departamentList.add("Ortopedie");
-//        ArrayAdapter<String> departamentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, departamentList);
-//        departamentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerDepartament.setAdapter(departamentAdapter);
-//
-//        // Popularea spinner-ului pentru doctori (Acestea ar trebui filtrate în funcție de departament)
-//        ArrayList<String> doctorList = new ArrayList<>();
-//        doctorList.add("Dr. Popescu");
-//        doctorList.add("Dr. Ionescu");
-//        doctorList.add("Dr. Vasilescu");
-//        ArrayAdapter<String> doctorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, doctorList);
-//        doctorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerDoctor.setAdapter(doctorAdapter);
-//    }
-
-
     public void addAppointment() {
         // Obținerea valorilor introduse de utilizator
         String patientName = editTextPatientName.getText().toString().trim();
         String selectedSpital = spinnerSpital.getSelectedItem().toString();
         String selectedDepartament = spinnerDepartament.getSelectedItem().toString();
         String selectedDoctor = spinnerDoctor.getSelectedItem().toString();
+        String dataProgramare = editTextDate.getText().toString().trim();
 
         // Validarea datelor
         if (patientName.isEmpty()) {
+            Toast.makeText(this, "Te rugăm să completezi toate câmpurile", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (dataProgramare.isEmpty()) {
             Toast.makeText(this, "Te rugăm să completezi toate câmpurile", Toast.LENGTH_SHORT).show();
             return;
         }

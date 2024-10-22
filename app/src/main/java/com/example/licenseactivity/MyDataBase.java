@@ -135,4 +135,47 @@ public class MyDataBase extends SQLiteOpenHelper {
         db.close();
         return doctors;
     }
+
+    public ArrayList<MedicalRecord> getAllMedicalRecords() {
+        ArrayList<MedicalRecord> medicalRecords = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLENAME, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMNID));
+                String spital = cursor.getString(cursor.getColumnIndexOrThrow(COLUMNNAME));
+                String departament = cursor.getString(cursor.getColumnIndexOrThrow(COLUMNDEPARTMENT));
+                String doctor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMNDOCTORS));
+
+                MedicalRecord record = new MedicalRecord(id, spital, departament, doctor);
+                medicalRecords.add(record);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return medicalRecords;
+    }
+
+    //metoda asta o folosesc pentru a afisa in main doctorii, departamentele si spitalele
+    //,dar momentan nu functioneaza legatura dintre CustomAdapter si Main
+    //pentru ca atunci cand bag credentialele admin-ului ma intoarce in CustomAdapter
+    // Citește toate datele din tabel
+//    Cursor readData() {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        if (db != null) {
+//            Cursor cursor = db.rawQuery("SELECT " + COLUMNID + " FROM " + TABLENAME, null);
+//            if (cursor != null && cursor.getCount() > 0) {
+//                Log.d("MyDataBase", "Data found in table");
+//                return cursor;  // Returnează cursorul valid
+//            } else {
+//                Log.d("MyDataBase", "No data found in table");
+//                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show();
+//            }
+//        } else {
+//            Log.e("MyDataBase", "Database is null");
+//        }
+//        return null;  // Returnează null dacă nu s-au găsit date
+//    }
 }

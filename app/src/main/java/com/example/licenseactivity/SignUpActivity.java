@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+//Nu imi merge sa salvez si numarul de telefon prin intermediul firebase, firestore !
+
 public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;

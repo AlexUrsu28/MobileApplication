@@ -51,8 +51,16 @@ public class LoginActivity extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
-                                        Toast.makeText(LoginActivity.this, "Login Succesful", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginActivity.this, AppoinmentActivity.class));
+                                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                                        // Verificarea dacă utilizatorul este admin sau user
+                                        if (email.equals("admin.managerul@yahoo.com")) {
+                                            // Redirecționează adminul către MainActivity
+                                            startActivity(new Intent(LoginActivity.this, MedicalListActivity.class));
+                                        } else {
+                                            // Redirecționează utilizatorul normal către AppointmentActivity
+                                            startActivity(new Intent(LoginActivity.this, AppoinmentActivity.class));
+                                        }
                                         finish();  // Închide activitatea curentă pentru a preveni întoarcerea
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {

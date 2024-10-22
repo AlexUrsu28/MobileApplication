@@ -12,35 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LicenseActivity"
         tools:targetApi="31">
-
-        <!-- Activitatea principală (de start) a aplicației -->
+        <activity
+            android:name=".MedicalListActivity"
+            android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- LoginActivity urmează după SignUpActivity -->
+        </activity> <!-- LoginActivity urmează după SignUpActivity -->
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:parentActivityName=".SignUpActivity" />
-
-        <!-- AppoinmentActivity urmează după LoginActivity -->
+            android:parentActivityName=".SignUpActivity" /> <!-- AppoinmentActivity urmează după LoginActivity -->
         <activity
             android:name=".AppoinmentActivity"
             android:exported="false"
-            android:parentActivityName=".LoginActivity" />
-
-        <!-- AddActivity urmează după AppoinmentActivity -->
+            android:parentActivityName=".LoginActivity" /> <!-- AddActivity urmează după AppoinmentActivity -->
         <activity
             android:name=".AddActivity"
             android:exported="false"
             android:parentActivityName=".AppoinmentActivity" />
-
     </application>
 
 </manifest>
